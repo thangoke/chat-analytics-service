@@ -50,7 +50,7 @@ public class ConversationDto {
   }
 
 
-  public ConversationDto fromEntity(Conversation conversation) {
+  public static ConversationDto fromEntity(Conversation conversation) {
     ConversationDto dto = new ConversationDto();
 
     dto.setId(conversation.getId());
@@ -59,10 +59,23 @@ public class ConversationDto {
 
     List<Member> members = conversation.getMembers();
     if (members != null) {
-      dto.members = members.stream().map(MemberDto::fromEntity).collect(Collectors.toList());
+      dto.setMembers(members.stream().map(MemberDto::fromEntity).collect(Collectors.toList()));
     }
 
     return dto;
+  }
+
+  public static Conversation toEntity(ConversationDto conversationDto) {
+    Conversation entity = new Conversation();
+
+    entity.setId(conversationDto.getId());
+    entity.setName(conversationDto.getName());
+    entity.setType(conversationDto.getType());
+
+    List<MemberDto> memberDtos = conversationDto.getMembers();
+    if (memberDtos != null) {
+      entity.setMembers(memberDtos.stream().map(MemberDto::toEntity).collect(Collectors.toList()));
+    }
   }
 
 }
