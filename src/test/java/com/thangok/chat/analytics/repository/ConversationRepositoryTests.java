@@ -1,4 +1,4 @@
-package com.thangok.chat.analytics;
+package com.thangok.chat.analytics.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import com.thangok.chat.analytics.entity.Conversation;
 import com.thangok.chat.analytics.entity.Member;
-import com.thangok.chat.analytics.repository.ConversationRepository;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
