@@ -1,6 +1,7 @@
 package com.thangok.chat.analytics.dto;
 
 import com.thangok.chat.analytics.entity.Member;
+import java.util.UUID;
 
 /**
  * Member DTO.
@@ -46,7 +47,7 @@ public class MemberDto {
   public static MemberDto fromEntity(Member member) {
     MemberDto dto = new MemberDto();
 
-    dto.setId(member.getId());
+    dto.setId(member.getId().toString());
     dto.setName(member.getName());
     dto.setPhoneNumber(member.getPhoneNumber());
 
@@ -62,7 +63,7 @@ public class MemberDto {
   public static Member toEntity(MemberDto memberDto) {
     Member entity = new Member();
 
-    entity.setId(memberDto.getId());
+    entity.setId(UUID.fromString(memberDto.getId()));
     entity.setName(memberDto.getName());
     entity.setPhoneNumber(memberDto.getPhoneNumber());
 
