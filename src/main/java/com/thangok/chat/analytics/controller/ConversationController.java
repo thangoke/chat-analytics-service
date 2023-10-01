@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("chat-groups")
-public class ChatGroupController {
+public class ConversationController {
 
   @GetMapping("")
   public List<String> getAll() {
