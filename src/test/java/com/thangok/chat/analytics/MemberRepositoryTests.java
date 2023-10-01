@@ -11,9 +11,9 @@ import com.thangok.chat.analytics.repository.MemberRepository;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-@SpringBootTest
+@DataJpaTest
 class MemberRepositoryTests {
 
   @Autowired
@@ -32,7 +32,7 @@ class MemberRepositoryTests {
     conversation.setId("c1");
     conversation.setName("conversation-thangok");
     conversation.setType("INDIVIDUAL");
-    conversationRepository.save(conversation);
+    conversation = conversationRepository.save(conversation);
 
     Member member = new Member();
     member.setName("thangok");
