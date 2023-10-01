@@ -1,12 +1,14 @@
 package com.thangok.chat.analytics.controller;
 
+import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
+/**
+ * Endpoint to Chat Group CRUD.
+ */
 @RestController
 @RequestMapping("chat-groups")
 public class ChatGroupController {
