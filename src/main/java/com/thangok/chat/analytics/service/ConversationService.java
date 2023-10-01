@@ -24,7 +24,7 @@ public class ConversationService {
   public Conversation createConversation(ConversationDto conversationDto) {
     Conversation conversation = ConversationDto.toEntity(conversationDto);
 
-    conversationRepository.save(conversation);
+    conversation = conversationRepository.save(conversation);
 
     return conversation;
   }
