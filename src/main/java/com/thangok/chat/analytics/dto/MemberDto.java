@@ -63,7 +63,9 @@ public class MemberDto {
   public static Member toEntity(MemberDto memberDto) {
     Member entity = new Member();
 
-    entity.setId(UUID.fromString(memberDto.getId()));
+    if (memberDto.getId() != null) {
+      entity.setId(UUID.fromString(memberDto.getId()));
+    }
     entity.setName(memberDto.getName());
     entity.setPhoneNumber(memberDto.getPhoneNumber());
 
