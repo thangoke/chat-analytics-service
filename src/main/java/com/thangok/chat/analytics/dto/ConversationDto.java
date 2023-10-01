@@ -1,9 +1,9 @@
 package com.thangok.chat.analytics.dto;
 
-import java.util.List;
-import java.util.stream.Collectors;
 import com.thangok.chat.analytics.entity.Conversation;
 import com.thangok.chat.analytics.entity.Member;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Conversation DTO.
@@ -50,6 +50,12 @@ public class ConversationDto {
   }
 
 
+  /**
+   * Convert Conversation Entity into Conversation DTO.
+   *
+   * @param conversation Conversation Entity.
+   * @return Conversation DTO.
+   */
   public static ConversationDto fromEntity(Conversation conversation) {
     ConversationDto dto = new ConversationDto();
 
@@ -65,6 +71,12 @@ public class ConversationDto {
     return dto;
   }
 
+  /**
+   * Convert Conversation DTO into Conversation Entity.
+   *
+   * @param conversationDto Conversation DTO.
+   * @return Conversation Entity.
+   */
   public static Conversation toEntity(ConversationDto conversationDto) {
     Conversation entity = new Conversation();
 
@@ -76,6 +88,8 @@ public class ConversationDto {
     if (memberDtos != null) {
       entity.setMembers(memberDtos.stream().map(MemberDto::toEntity).collect(Collectors.toList()));
     }
+
+    return entity;
   }
 
 }
