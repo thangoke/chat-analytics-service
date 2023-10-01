@@ -1,15 +1,31 @@
 package com.thangok.chat.analytics.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 /**
  * Member in Conversation.
  */
+@Entity
+@Table(name = "member")
 public class Member {
 
+  @Id
   private String id;
 
+  @Column(name = "phone_number", nullable = false)
   private String phoneNumber;
 
+  @Column(name = "name", nullable = false)
   private String name;
+
+  @ManyToOne
+  @JoinColumn(name = "conversation_id", nullable = false)
+  private Conversation conversation;
 
   public String getPhoneNumber() {
     return phoneNumber;
@@ -23,16 +39,8 @@ public class Member {
     this.id = id;
   }
 
-  /**
-   * invoke setPhoneNumber will also set id, as assumption.
-   *
-   * @param phoneNumber phone number.
-   */
   public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
-
-    // sync entity id with phone number, as assumption.
-    this.id = phoneNumber;
   }
 
   public String getName() {
