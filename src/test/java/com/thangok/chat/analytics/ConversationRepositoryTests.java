@@ -10,9 +10,9 @@ import com.thangok.chat.analytics.repository.ConversationRepository;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-@SpringBootTest
+@DataJpaTest
 class ConversationRepositoryTests {
   @Autowired
   private ConversationRepository conversationRepository;
