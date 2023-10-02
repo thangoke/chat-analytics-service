@@ -1,5 +1,6 @@
 package com.thangok.chat.analytics.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -24,7 +25,7 @@ public class Conversation {
   @Column(name = "type", nullable = false)
   private String type;
 
-  @OneToMany(mappedBy = "conversation")
+  @OneToMany(mappedBy = "conversation", cascade = {CascadeType.ALL})
   private List<Member> members;
 
   public String getId() {

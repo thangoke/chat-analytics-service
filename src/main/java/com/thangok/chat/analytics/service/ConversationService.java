@@ -21,12 +21,12 @@ public class ConversationService {
    * @param conversationDto Conversation DTO.
    * @return Conversation.
    */
-  public Conversation createConversation(ConversationDto conversationDto) {
+  public ConversationDto createConversation(ConversationDto conversationDto) {
     Conversation conversation = ConversationDto.toEntity(conversationDto);
 
     conversation = conversationRepository.save(conversation);
 
-    return conversation;
+    return ConversationDto.fromEntity(conversation);
   }
 
 }

@@ -40,7 +40,7 @@ class ConversationServiceTests {
     conversationDto.setType("INDIVIDUAL");
     conversationDto.setMembers(memberDtos);
 
-    Conversation conversation = conversationService.createConversation(conversationDto);
+    ConversationDto conversation = conversationService.createConversation(conversationDto);
     assertNotNull(conversation);
 
   }
