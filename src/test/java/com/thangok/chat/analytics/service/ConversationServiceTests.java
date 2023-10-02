@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import com.thangok.chat.analytics.dto.ConversationDto;
 import com.thangok.chat.analytics.dto.MemberDto;
 import java.util.ArrayList;
@@ -52,5 +53,6 @@ class ConversationServiceTests {
 
     assertTrue(result.getMembers().stream().anyMatch(member -> "Bob".equals(member.getName())));
     assertTrue(result.getMembers().stream().anyMatch(member -> "Alice".equals(member.getName())));
+
   }
 }
