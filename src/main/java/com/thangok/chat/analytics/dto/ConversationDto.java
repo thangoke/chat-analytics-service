@@ -86,7 +86,11 @@ public class ConversationDto {
 
     List<MemberDto> memberDtos = conversationDto.getMembers();
     if (memberDtos != null) {
-      entity.setMembers(memberDtos.stream().map(MemberDto::toEntity).collect(Collectors.toList()));
+      entity.setMembers(memberDtos.stream().map(memberDto -> {
+        Member member = MemberDto.toEntity(memberDto);
+        member.setConversation(entity);
+        return member;
+      }).collect(Collectors.toList()));
     }
 
     return entity;
