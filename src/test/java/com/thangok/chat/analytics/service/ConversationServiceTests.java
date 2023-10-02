@@ -1,10 +1,11 @@
 package com.thangok.chat.analytics.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.thangok.chat.analytics.dto.ConversationDto;
 import com.thangok.chat.analytics.dto.MemberDto;
-import com.thangok.chat.analytics.entity.Conversation;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -40,8 +41,16 @@ class ConversationServiceTests {
     conversationDto.setType("INDIVIDUAL");
     conversationDto.setMembers(memberDtos);
 
-    ConversationDto conversation = conversationService.createConversation(conversationDto);
-    assertNotNull(conversation);
+    ConversationDto result = conversationService.createConversation(conversationDto);
+    assertNotNull(result);
+    assertEquals(conversationDto.getId(), result.getId());
+    assertEquals(conversationDto.getName(), result.getName());
+    assertEquals(conversationDto.getType(), result.getType());
 
+    assertFalse(result.getMembers().isEmpty());
+    assertEquals(conversationDto.getMembers().size(), result.getMembers().size());
+
+    assertTrue(result.getMembers().stream().anyMatch(member -> "Bob".equals(member.getName())));
+    assertTrue(result.getMembers().stream().anyMatch(member -> "Alice".equals(member.getName())));
   }
 }

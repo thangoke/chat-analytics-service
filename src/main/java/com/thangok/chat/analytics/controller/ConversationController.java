@@ -1,7 +1,6 @@
 package com.thangok.chat.analytics.controller;
 
 import com.thangok.chat.analytics.dto.ConversationDto;
-import com.thangok.chat.analytics.entity.Conversation;
 import com.thangok.chat.analytics.service.ConversationService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
