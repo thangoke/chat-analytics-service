@@ -23,6 +23,14 @@ public class Attachment {
   @Column(name = "name", nullable = false)
   private String name;
 
+  public UUID getId() {
+    return id;
+  }
+
+  public void setId(UUID id) {
+    this.id = id;
+  }
+
   public String getUrl() {
     return url;
   }
