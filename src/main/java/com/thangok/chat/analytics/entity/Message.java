@@ -1,19 +1,32 @@
 package com.thangok.chat.analytics.entity;
 
+import jakarta.persistence.*;
 import java.util.List;
 import java.util.UUID;
+import org.hibernate.annotations.GenericGenerator;
 
+@Entity
+@Table(name = "message")
 public class Message {
+
+  @Id
+  @GeneratedValue(generator = "uuid2")
+  @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+  @Column(name = "id", columnDefinition = "VARCHAR(255)")
   private UUID id;
 
+  @Column(name = "conversation", nullable = false)
   private String conversation;
 
   private List<Attachment> attachments;
 
+  @Column(name = "sender_phone_number", nullable = false)
   private String senderPhoneNumber;
 
+  @Column(name = "receiver_type", nullable = false)
   private String receiverType;
 
+  @Column(name = "receiver_id", nullable = false)
   private String receiverId;
 
   public UUID getId() {
