@@ -23,6 +23,10 @@ public class Attachment {
   @Column(name = "name", nullable = false)
   private String name;
 
+  @ManyToOne
+  @JoinColumn(name = "message_id", nullable = false)
+  private Message message;
+
   public UUID getId() {
     return id;
   }

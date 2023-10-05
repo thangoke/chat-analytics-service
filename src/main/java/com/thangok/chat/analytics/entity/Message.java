@@ -18,6 +18,7 @@ public class Message {
   @Column(name = "conversation", nullable = false)
   private String conversation;
 
+  @OneToMany(mappedBy = "message", cascade = {CascadeType.ALL})
   private List<Attachment> attachments;
 
   @Column(name = "sender_phone_number", nullable = false)
