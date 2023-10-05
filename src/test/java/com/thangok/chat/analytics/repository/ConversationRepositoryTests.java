@@ -20,7 +20,7 @@ class ConversationRepositoryTests {
   void contextLoads() {}
 
   @Test
-  public void givenConversationRepository_whenSaveAndRetreiveEntity_thenOk() {
+  public void givenConversationRepository_whenSaveAndRetrieveEntity_thenOk() {
 
     Conversation conversation = new Conversation();
     conversation.setId("c1");

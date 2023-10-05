@@ -24,7 +24,7 @@ class MemberRepositoryTests {
   void contextLoads() {}
 
   @Test
-  public void givenMemberRepository_whenSaveAndRetreiveEntity_thenOk() {
+  public void givenMemberRepository_whenSaveAndRetrieveEntity_thenOk() {
 
     Conversation conversation = new Conversation();
     conversation.setId("c1");
