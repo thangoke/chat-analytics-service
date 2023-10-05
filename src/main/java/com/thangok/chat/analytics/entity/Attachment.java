@@ -58,4 +58,12 @@ public class Attachment {
   public void setName(String name) {
     this.name = name;
   }
+
+  public Message getMessage() {
+    return message;
+  }
+
+  public void setMessage(Message message) {
+    this.message = message;
+  }
 }
