@@ -28,9 +28,7 @@ class MessageRepositoryTests {
     message.setReceiverId("84957483958");
     message.setSenderPhoneNumber("84758367937");
     message.setConversation("Hi, nice to meet you");
-
-    List<Attachment> attachments = new ArrayList<>();
-    message.setAttachments(attachments);
+    message.setAttachments(new ArrayList<>());
 
     Attachment att1 = new Attachment();
     att1.setMessage(message);
