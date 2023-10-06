@@ -50,18 +50,19 @@ class ConversationRepositoryTests {
     assertEquals(conversation.getType(), retrieveConversation.getType());
 
     List<Member> retrieveMembers = retrieveConversation.getMembers();
+    assertNotNull(retrieveMembers);
     assertEquals(conversation.getMembers().size(), retrieveMembers.size());
 
     assertTrue(
         retrieveMembers.stream()
-            .allMatch(
+            .anyMatch(
                 member ->
                     member
                         .getPhoneNumber()
                         .equals(conversation.getMembers().get(0).getPhoneNumber())));
     assertTrue(
         retrieveMembers.stream()
-            .allMatch(
+            .anyMatch(
                 member ->
                     member
                         .getPhoneNumber()
