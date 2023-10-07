@@ -1,17 +1,18 @@
 package com.thangok.chat.analytics.dto;
 
 import com.thangok.chat.analytics.entity.Attachment;
+import com.thangok.chat.analytics.entity.Message;
 import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
-/**
- * Message DTO.
- */
+/** Message DTO. */
 public class MessageDto {
   private String id;
 
   private String conversation;
 
-  private List<Attachment> attachments;
+  private List<AttachmentDto> attachments;
 
   private String senderPhoneNumber;
 
@@ -35,11 +36,11 @@ public class MessageDto {
     this.conversation = conversation;
   }
 
-  public List<Attachment> getAttachments() {
+  public List<AttachmentDto> getAttachments() {
     return attachments;
   }
 
-  public void setAttachments(List<Attachment> attachments) {
+  public void setAttachments(List<AttachmentDto> attachments) {
     this.attachments = attachments;
   }
 
@@ -67,5 +68,38 @@ public class MessageDto {
     this.receiverId = receiverId;
   }
 
+  public static MessageDto fromEntity(Message message) {
+    MessageDto dto = new MessageDto();
+    dto.setId(message.getId().toString());
+    dto.setSenderPhoneNumber(message.getSenderPhoneNumber());
+    dto.setReceiverType(message.getReceiverType());
+    dto.setReceiverId(message.getReceiverId());
+    dto.setConversation(message.getConversation());
+    dto.setAttachments(
+        message.getAttachments().stream()
+            .map(AttachmentDto::fromEntity)
+            .collect(Collectors.toList()));
+    return dto;
+  }
 
+  public static Message toEntity(MessageDto messageDto) {
+    Message entity = new Message();
+    if (messageDto.getId() != null) {
+      entity.setId(UUID.fromString(messageDto.getId()));
+    }
+    entity.setSenderPhoneNumber(messageDto.getSenderPhoneNumber());
+    entity.setReceiverType(messageDto.getReceiverType());
+    entity.setReceiverId(messageDto.getReceiverId());
+    entity.setConversation(messageDto.getConversation());
+    entity.setAttachments(
+        messageDto.getAttachments().stream()
+            .map(
+                attachmentDto -> {
+                  Attachment attachment = AttachmentDto.toEntity(attachmentDto);
+                  attachment.setMessage(entity);
+                  return attachment;
+                })
+            .collect(Collectors.toList()));
+    return entity;
+  }
 }
