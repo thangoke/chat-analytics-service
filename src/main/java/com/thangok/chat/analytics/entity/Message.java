@@ -1,6 +1,7 @@
 package com.thangok.chat.analytics.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import org.hibernate.annotations.GenericGenerator;
@@ -18,7 +19,9 @@ public class Message {
   @Column(name = "conversation", nullable = false)
   private String conversation;
 
-  @OneToMany(mappedBy = "message", cascade = {CascadeType.ALL})
+  @OneToMany(
+      mappedBy = "message",
+      cascade = {CascadeType.ALL})
   private List<Attachment> attachments;
 
   @Column(name = "sender_phone_number", nullable = false)
@@ -29,6 +32,9 @@ public class Message {
 
   @Column(name = "receiver_id", nullable = false)
   private String receiverId;
+
+  @Column(name = "appended_time", columnDefinition = "TIMESTAMP")
+  private LocalDateTime appendedTime;
 
   public UUID getId() {
     return id;
@@ -76,5 +82,13 @@ public class Message {
 
   public void setReceiverId(String receiverId) {
     this.receiverId = receiverId;
+  }
+
+  public LocalDateTime getAppendedTime() {
+    return appendedTime;
+  }
+
+  public void setAppendedTime(LocalDateTime appendedTime) {
+    this.appendedTime = appendedTime;
   }
 }
