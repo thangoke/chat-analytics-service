@@ -2,6 +2,7 @@ package com.thangok.chat.analytics.dto;
 
 import com.thangok.chat.analytics.entity.Attachment;
 import com.thangok.chat.analytics.entity.Message;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -19,6 +20,8 @@ public class MessageDto {
   private String receiverType;
 
   private String receiverId;
+
+  private LocalDateTime appendedTime;
 
   public String getId() {
     return id;
@@ -68,6 +71,14 @@ public class MessageDto {
     this.receiverId = receiverId;
   }
 
+  public LocalDateTime getAppendedTime() {
+    return appendedTime;
+  }
+
+  public void setAppendedTime(LocalDateTime appendedTime) {
+    this.appendedTime = appendedTime;
+  }
+
   public static MessageDto fromEntity(Message message) {
     MessageDto dto = new MessageDto();
     dto.setId(message.getId().toString());
@@ -75,6 +86,7 @@ public class MessageDto {
     dto.setReceiverType(message.getReceiverType());
     dto.setReceiverId(message.getReceiverId());
     dto.setConversation(message.getConversation());
+    dto.setAppendedTime(message.getAppendedTime());
     dto.setAttachments(
         message.getAttachments().stream()
             .map(AttachmentDto::fromEntity)

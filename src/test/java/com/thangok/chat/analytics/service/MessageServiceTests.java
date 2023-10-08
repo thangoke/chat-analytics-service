@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.thangok.chat.analytics.dto.AttachmentDto;
 import com.thangok.chat.analytics.dto.MessageDto;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,10 @@ class MessageServiceTests {
     assertEquals(messageDto.getReceiverType(), retrieveMessageDto.getReceiverType());
     assertEquals(messageDto.getReceiverId(), retrieveMessageDto.getReceiverId());
     assertEquals(messageDto.getConversation(), retrieveMessageDto.getConversation());
+
+    LocalDateTime referenceTime = LocalDateTime.now();
+    assertNotNull(retrieveMessageDto.getAppendedTime());
+    assertTrue(retrieveMessageDto.getAppendedTime().isBefore(referenceTime));
 
     List<AttachmentDto> retrieveAttachmentDtos = retrieveMessageDto.getAttachments();
     assertNotNull(retrieveAttachmentDtos);
