@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Endpoint to Chat Group CRUD.
  */
 @RestController
-@RequestMapping("conversation")
+@RequestMapping("conversations")
 public class ConversationController {
 
   @Autowired
