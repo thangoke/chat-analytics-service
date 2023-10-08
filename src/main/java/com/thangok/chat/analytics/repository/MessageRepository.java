@@ -13,15 +13,15 @@ public interface MessageRepository extends JpaRepository<Message, UUID> {
   @Query(
       value =
           " SELECT m "
-              + " FROM message m "
+              + " FROM Message m "
               + " WHERE m.appendedTime >= :fromTime "
               + " AND m.appendedTime <= :toTime ")
   List<Message> findByTimeRange(
       @Param("fromTime") LocalDateTime fromTime, @Param("toTime") LocalDateTime toTime);
 
-  @Query(value = " SELECT m " + " FROM message m " + " WHERE m.appendedTime >= :fromTime ")
+  @Query(value = " SELECT m " + " FROM Message m " + " WHERE m.appendedTime >= :fromTime ")
   List<Message> findByFromTime(@Param("fromTime") LocalDateTime fromTime);
 
-  @Query(value = " SELECT m " + " FROM message m " + " WHERE m.appendedTime <= :toTime ")
+  @Query(value = " SELECT m " + " FROM Message m " + " WHERE m.appendedTime <= :toTime ")
   List<Message> findByToTime(@Param("toTime") LocalDateTime toTime);
 }
