@@ -20,7 +20,8 @@ public class MessageController {
 
   @GetMapping("")
   public List<MessageDto> getMessages(
-      @RequestParam("from-time") String fromTime, @RequestParam("to-time") String toTime) {
+      @RequestParam(value = "from-time", required = false) String fromTime,
+      @RequestParam(value = "to-time", required = false) String toTime) {
     List<Message> messages = null;
 
     LocalDateTime _fromTime = null;
